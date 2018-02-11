@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(form, {'method': 'post', 'action': path('advert_new'), 'attr': {'class': 'form-signin fos_user_registration_register'}}) }}
+    <h3 class="text-center">New Ad</h3>
+
+    <div class="form-group">
+        {{ form_row(form.title, { 'attr' : { 'class': 'form-control' } }) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.description, { 'attr' : { 'class': 'form-control' } }) }}
+    </div>
+    <div>
+        <input class="btn btn-success btn-block" type="submit" value="Create" />
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}

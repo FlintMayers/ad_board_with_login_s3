@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Advert</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ advert.id }}</td>
+        </tr>
+        <tr>
+            <th>Created_at</th>
+            <td>{% if advert.createdat %}{{ advert.createdat|date('Y-m-d H:i:s') }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Modified_at</th>
+            <td>{% if advert.modifiedat %}{{ advert.modifiedat|date('Y-m-d H:i:s') }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td>{{ advert.title }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ advert.description }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a class="btn" href="{{ path('advert_index') }}">Back to the list</a>
+{% endblock %}
