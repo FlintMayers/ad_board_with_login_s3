@@ -1,0 +1,29 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if is_granted("ROLE_USER") == false %}
+    <div class="container">
+        <div class="wrapper col-md-5">
+            {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'form-signin fos_user_registration_register'}}) }}
+            <h3 class="text-center">Register</h3>
+
+            <hr class="colorgraph"><br>
+            <div class="form-group">
+                {{ form_row(form.email, { 'attr' : { 'class': 'form-control' } }) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.username, { 'attr' : { 'class': 'form-control' } }) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.plainPassword.first, { 'attr' : { 'class': 'form-control' } }) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.plainPassword.second, { 'attr' : { 'class': 'form-control' } }) }}
+            </div>
+            <div>
+                <input class="btn btn-success btn-block" type="submit" value="{{ 'registration.submit'|trans }}" />
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endif %}
