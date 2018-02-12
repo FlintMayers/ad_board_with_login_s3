@@ -44,6 +44,7 @@ class AdvertController extends Controller
      */
     public function indexUserAction()
     {
+        $this->denyAccessUnlessGranted('ROLE_USER', null, 'Unable to access this page');
         $em = $this->getDoctrine()->getManager();
         $currentUserId = $this->getUser()->getId();
 
@@ -62,6 +63,7 @@ class AdvertController extends Controller
      */
     public function newAction(Request $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_USER', null, 'Unable to access this page');
         $advert = new Advert();
         $form = $this->createForm('AppBundle\Form\AdvertType', $advert);
         $form->handleRequest($request);
@@ -106,6 +108,7 @@ class AdvertController extends Controller
      */
     public function editAction(Request $request, Advert $advert)
     {
+        $this->denyAccessUnlessGranted('ROLE_USER', null, 'Unable to access this page');
         $currentUser = $this->getUser()->getId();
         $advertOwner = $advert->getUser()->getId();
 
@@ -138,6 +141,7 @@ class AdvertController extends Controller
      */
     public function deleteAction(Request $request, Advert $advert)
     {
+        $this->denyAccessUnlessGranted('ROLE_USER', null, 'Unable to access this page');
         $form = $this->createDeleteForm($advert);
         $form->handleRequest($request);
 
